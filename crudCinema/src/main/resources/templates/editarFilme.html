@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" th:href="@{style/reset.css}">
+	<title>CNF ADM</title>
+</head>
+
+<body>
+
+	<!-- LOGO / NAVEGAÇÃO -->
+	<div class="logo">
+		<div>
+			<img width="100px" th:src="@{logo/15762.jpg}" />
+		</div>
+		<h1 th:text="${Nome_Site}"></h1>
+	</div>
+
+	<nav>
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" aria-current="page" href="/">Sair</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" aria-current="page" href="/admin">Voltar</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<form action="#" th:action="@{/atualizar/{id}(id=${filmes.id})}" 
+		th:object="${filmes}" class="needs-validation" method="POST"
+		style="margin: 50px auto; width: 300px; padding: 10px 20px"
+		>
+			
+			<div class="mb-3">
+				<label class="form-label" for="nome">Nome Filme:</label>
+				<input class="form-control" type="text" id="nome" th:field="*{nome}"  placeholder="digite o nome do filme">
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+			
+			<div class="mb-3">
+				<label class="form-label" for="descricaoProduto">Descrição do Filme:</label>
+				<input class="form-control" type="text" id="decricao" th:field="*{decricao}" placeholder="digite a descrição do filme">
+				<span th:if="${#fields.hasErrors('decricao')}" th:errors="*{decricao}"></span>
+			</div>
+			
+			<div class="mb-3">
+				<label class="form-label" for="urlImg">Capa do Filme:</label>
+				<input class="form-control" type="text" id="urlImg" th:field="*{urlImg}">
+				<span th:if="${#fields.hasErrors('urlImg')}" th:errors="*{urlImg}"></span>
+			</div>
+			
+			<div class="mb-3">
+				<label class="form-label" for="urlFilmes">Url do Filme</label>
+				<input class="form-control" type="text" id="urlFilmes" th:field="*{urlFilmes}" placeholder="https://www.google.com">
+				<span th:if="${#fields.hasErrors('urlFilmes')}" th:errors="*{urlFilmes}"></span>
+			</div>
+			<button type="submit" class="btn btn-primary">Enviar</button>
+		</form>
+	
+	</div>
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
